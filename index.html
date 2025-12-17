@@ -427,9 +427,14 @@
             }
 
             .gallery-item img {
-                width: 100%;
-                height: 280px;
-                object-fit: contain;
+                height: auto;       
+                max-height: 325px;  
+                object-fit: fill;
+                display: block;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
 
             }
         }
@@ -455,7 +460,7 @@
 
             .gallery-item img {
                 height: 225px;
-                object-fit: cover;
+                object-fit: fill;
 
             }
 
@@ -473,7 +478,7 @@
 </head>
 <body>
     <nav>
-        <div class="logo">Salmine's journey test2</div>
+        <div class="logo">Salmine's journey test final</div>
         <div class="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </div>
