@@ -617,9 +617,9 @@
         }
 
         function updateSlide() {
-            const offset = -currentSlide * 100;
-            track.style.transform = `translate3d(${offset}%, 0, 0)`;
-            track.style.webkitTransform = `translate3d(${offset}%, 0, 0)`;
+            const slideWidth = track.clientWidth;
+            const offset = -currentSlide * slideWidth;
+            track.style.transform = `translate3d(${offset}px, 0, 0)`;
             
             document.querySelectorAll('.indicator').forEach((indicator, index) => {
                 indicator.classList.toggle('active', index === currentSlide);
