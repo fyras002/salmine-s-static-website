@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salmine's Journey - Coach Nutrition & Entraînement Certifiée</title>
+    <title>Salmine's journey - Coach Nutrition & Entraînement Certifiée</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -300,6 +300,8 @@
         .gallery-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            -webkit-transition: -webkit-transform 0.5s ease-in-out;
+            will-change: transform;
         }
 
         .gallery-item {
@@ -312,6 +314,10 @@
             height: 500px;
             object-fit: cover;
             display: block;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         .gallery-controls {
@@ -465,7 +471,7 @@
 </head>
 <body>
     <nav>
-        <div class="logo">Salmine's Journey</div>
+        <div class="logo">Salmine's journey</div>
         <div class="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </div>
@@ -611,9 +617,10 @@
         }
 
         function updateSlide() {
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const offset = -currentSlide * 100;
+            track.style.transform = `translate3d(${offset}%, 0, 0)`;
+            track.style.webkitTransform = `translate3d(${offset}%, 0, 0)`;
             
-    
             document.querySelectorAll('.indicator').forEach((indicator, index) => {
                 indicator.classList.toggle('active', index === currentSlide);
             });
